@@ -70,6 +70,7 @@ def screenshot_to_text():
     # Read question image to text
     q.content['sv'] = bing.ocr(q.image)
     if dev: cv2.imwrite('img/q/' + str(q.id) + '.png', q.image)
+    q.content['sv'] = q.content['sv'].replace("?", "")
     print(q.content['sv'])
     # Read alternatives image to text
     for a in alt:
