@@ -25,14 +25,15 @@ def bing(results, alt, lang="sv-SE"):
         a.pointify['hits'] = hits
         a.pointify['points'] = points
 
+    # Split words and check
     if all(a.pointify['hits'] == 0 for a in alt):
         for a in alt:
 
             text = a.content[lang.split('-')[0]]
-
             pointValue = 80
             hits = 0
             points = 0
+
             # Filter out functional words and remove special characters
             words = afilter.rm_fwords(text, lang.split('-')[0]).split(' ')
 
@@ -43,6 +44,25 @@ def bing(results, alt, lang="sv-SE"):
 
             a.pointify['hits'] = hits
             a.pointify['points'] = (points / len(words))
+
+    # Remove units and search
+    if all(a.pointify['hits'] == 0 for a in alt):
+        for a in alt:
+
+            text = a.content[lang.split('-')[0]]
+            pointValue = 80
+            hits = 0
+            points = 0
+
+            # Filter out units
+            text = afilter.rm_units(text)
+
+            for result in results:
+                hits += get_hits(result['webPages']['value'], text)
+                points += get_points(result['webPages']['value'], text, pointValue)
+
+            a.pointify['hits'] = hits
+            a.pointify['points'] = points
 
     return alt
 
@@ -104,21 +124,3 @@ def nbd(hits_term1, hits_term2, hits_combined, hits_the):
     denomin = lN - min([lhits1, lhits2])
 
     return numerator / denomin
-
-
-# Answer search - Question words split check
-    '''
-    for answer in answers:
-        searches['answers'].append(bing.search(answer, lang))
-
-    if all(value == 0 for value in points.values()):
-        i = 0
-        test = {}
-        for search in searches['answers']:
-            words = afilter.rm_fwords(question, lang.split('-')[0]).split(' ')
-            for word in words:
-                i += check_occurences(search, word)
-            points[search['queryContext']['originalQuery']] = i/100
-
-    #Return dict with answer and i
-    '''

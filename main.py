@@ -53,6 +53,7 @@ alt.append(Text(3, {'x': [30, 640], 'y': [660, 725]}, color=(68, 255, 204)))
 # Settings
 dev = False
 cutoff = 150
+guest = None
 
 # Functions
 def screenshot_to_text():
@@ -117,7 +118,7 @@ while True:
 
         screenshot_to_text()
 
-        # Open browser
+        # Search images
         i = 0
         for a in alt:
             # Pure alternative
@@ -148,12 +149,18 @@ while True:
     if k % 256 == 114:
         # R pressed
         print("[R]", '\n')
+        guest = input('Guest: ')
 
     if k % 256 == 32:
         # SPACE pressed
         print("[SPACE]", '\n')
+        print(guest)
 
         screenshot_to_text()
+
+        # If "jag" in question
+        if "jag" in q.content['sv'] and guest != None:
+            q.content['sv'].replace("jag", guest)
 
         # Bundle searches into array
         searches = []

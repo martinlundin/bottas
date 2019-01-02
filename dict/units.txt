@@ -1,0 +1,16 @@
+m
+meter
+cm
+mm
+km
+mil
+kg
+g
+gram
+mg
+ton
+km/h
+h
+timmar
+minuter
+sekunder
