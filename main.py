@@ -173,14 +173,14 @@ while True:
             searches.append(quotes[0])
 
         # Captial letter words are usually important, add it to the search
-        first = True
-        capital_words = []
-        for word in q.content['sv'].split():
-            if word[0].istitle() and first is False:
-                capital_words.append(word)
-            first = False
-        if capital_words:
-            searches.append(' '.join(capital_words))
+        #first = True
+        #capital_words = []
+        #for word in q.content['sv'].split():
+        #    if word[0].istitle() and first is False:
+        #        capital_words.append(word)
+        #    first = False
+        #if capital_words:
+        #    searches.append(' '.join(capital_words))
 
         # Perform searches
         bingResults = bing.search(searches)
