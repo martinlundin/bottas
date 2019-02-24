@@ -87,7 +87,7 @@ def screenshot_to_text():
             a.content['sv'] = pytesseract.image_to_string(Image.fromarray(a.image), lang="swe")
             print(a.content['sv'])
             if a.content['sv'] == "" or a.content['sv'] == " ":
-                a.content['sv'] = pytesseract.image_to_string(Image.fromarray(a.image), lang="swe", config='-psm 10')
+                a.content['sv'] = pytesseract.image_to_string(Image.fromarray(a.image), lang="swe", config='--psm 10')
                 print(a.content['sv'])
 
 # Create window
