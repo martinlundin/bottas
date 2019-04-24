@@ -51,7 +51,7 @@ alt.append(Text(2, {'x': [50, 610], 'y': [627, 692]}, color=(68, 213, 255)))
 alt.append(Text(3, {'x': [50, 610], 'y': [745, 810]}, color=(68, 255, 204)))
 
 # Settings
-dev = True
+dev = False
 cutoff = 150
 guest = None
 
@@ -59,7 +59,7 @@ guest = None
 def screenshot_to_text():
     #Take screenshot
 
-    #pyautogui.screenshot('img/screenshot.png')
+    pyautogui.screenshot('img/screenshot.png')
     image = cv2.imread('img/screenshot.png')
     image = image[190:1400, 30:700]
 
