@@ -44,14 +44,14 @@ class Text(object):
 # Objects
 # q = question
 # alt = alternatives, a = alternative
-q = Text(100, {'x': [25, 660], 'y': [195, 370]})
+q = Text(100, {'x': [25, 660], 'y': [225, 420]})
 alt = []
-alt.append(Text(1, {'x': [30, 640], 'y': [440, 505]}, color=(68, 165, 255)))
-alt.append(Text(2, {'x': [30, 640], 'y': [550, 615]}, color=(68, 213, 255)))
-alt.append(Text(3, {'x': [30, 640], 'y': [660, 725]}, color=(68, 255, 204)))
+alt.append(Text(1, {'x': [50, 610], 'y': [510, 575]}, color=(68, 165, 255)))
+alt.append(Text(2, {'x': [50, 610], 'y': [627, 692]}, color=(68, 213, 255)))
+alt.append(Text(3, {'x': [50, 610], 'y': [745, 810]}, color=(68, 255, 204)))
 
 # Settings
-dev = False
+dev = True
 cutoff = 150
 guest = None
 
@@ -59,7 +59,7 @@ guest = None
 def screenshot_to_text():
     #Take screenshot
 
-    pyautogui.screenshot('img/screenshot.png')
+    #pyautogui.screenshot('img/screenshot.png')
     image = cv2.imread('img/screenshot.png')
     image = image[190:1400, 30:700]
 

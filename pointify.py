@@ -18,12 +18,13 @@ def bing(results, alt, lang="sv-SE"):
         hits = 0
         points = 0
 
-        for result in results:
-            hits += get_hits(result['webPages']['value'], text)
-            points += get_points(result['webPages']['value'], text, pointValue)
+        if text != "" and text != " ":
+            for result in results:
+                hits += get_hits(result['webPages']['value'], text)
+                points += get_points(result['webPages']['value'], text, pointValue)
 
-        a.pointify['hits'] = hits
-        a.pointify['points'] = points
+            a.pointify['hits'] = hits
+            a.pointify['points'] = points
 
     # Split words and check
     if all(a.pointify['hits'] == 0 for a in alt):
@@ -37,13 +38,14 @@ def bing(results, alt, lang="sv-SE"):
             # Filter out functional words and remove special characters
             words = afilter.rm_fwords(text, lang.split('-')[0]).split(' ')
 
-            for result in results:
-                for word in words:
-                    hits += get_hits(result['webPages']['value'], word)
-                    points += get_points(result['webPages']['value'], word, pointValue)
+            if text != "" and text != " ":
+                for result in results:
+                    for word in words:
+                        hits += get_hits(result['webPages']['value'], word)
+                        points += get_points(result['webPages']['value'], word, pointValue)
 
-            a.pointify['hits'] = hits
-            a.pointify['points'] = (points / len(words))
+                a.pointify['hits'] = hits
+                a.pointify['points'] = (points / len(words))
 
     # Remove units and search
     if all(a.pointify['hits'] == 0 for a in alt):
@@ -57,12 +59,13 @@ def bing(results, alt, lang="sv-SE"):
             # Filter out units
             text = afilter.rm_units(text)
 
-            for result in results:
-                hits += get_hits(result['webPages']['value'], text)
-                points += get_points(result['webPages']['value'], text, pointValue)
+            if text != "" and text != " ":
+                for result in results:
+                    hits += get_hits(result['webPages']['value'], text)
+                    points += get_points(result['webPages']['value'], text, pointValue)
 
-            a.pointify['hits'] = hits
-            a.pointify['points'] = points
+                a.pointify['hits'] = hits
+                a.pointify['points'] = points
 
     return alt
 
