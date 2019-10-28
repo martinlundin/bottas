@@ -10,6 +10,8 @@ Requirements: Python 3.6, Tesseract (and Homebrew to install it)
 `source venv/bin/activate`
 1. Install requirements
 `pip3 install -r requirements.txt`
+1. Python might need ssl certificate. Install one by running
+`sudo /Applications/Python\ 3.6/Install\ Certificates.command`
 
 **That's it**
 
